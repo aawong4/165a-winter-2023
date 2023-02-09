@@ -4,9 +4,7 @@
 class TailRecord(Record):
     """
     @author Maintain by ShangqiCai
-    """
-
-    """
+    
     when the update is happen, the new TailRecord should append to the tailPage
     last TailRecord, it should first get the last TailRecord update_id, and set
     this id to new TailRecord :param previous_pointer. After that, the new TailRecord

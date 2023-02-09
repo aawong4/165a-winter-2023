@@ -1,4 +1,4 @@
-from lstore.table import Table, Record
+from lstore.components.Record import Record
 from lstore.index import Index
 
 
