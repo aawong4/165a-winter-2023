@@ -14,14 +14,22 @@ class Index:
     """
 
     def locate(self, column, value):
-        pass
+        result = []
+        for i in self.indices[column]:
+            if i[0] == value:
+                result.append(i[1])
+        return result
 
     """
     # Returns the RIDs of all records with values in column "column" between "begin" and "end"
     """
 
     def locate_range(self, begin, end, column):
-        pass
+        result = []
+        for i in self.indices[column]:
+            if i[0] >= begin and i[0] <= end:
+                result.append(i[1])
+        return result
 
     """
     # optional: Create index on specific column

@@ -21,8 +21,13 @@ class Query:
     # Return False if record doesn't exist or is locked due to 2PL
     """
     def delete(self, primary_key):
-        pass
-    
+        RID = self.table.index.locate(self.table.key, primary_key)
+        if len(RID) == 0:
+            print("No match primary key found")
+            return False;
+            # page_location = self.table.page_directory[RID[0]]
+            
+
     
     """
     # Insert a record with specified columns
