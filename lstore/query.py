@@ -1,6 +1,7 @@
 from lstore.components.Record import Record
 from lstore.index import Index
-
+from time import time
+import datetime
 
 class Query:
     """
@@ -21,11 +22,18 @@ class Query:
     # Return False if record doesn't exist or is locked due to 2PL
     """
     def delete(self, primary_key):
-        RID = self.table.index.locate(self.table.key, primary_key)
-        if len(RID) == 0:
+        rids = self.table.index.locate(self.table.key, primary_key)
+        if len(rids) == 0:
             print("No match primary key found")
             return False;
-            # page_location = self.table.page_directory[RID[0]]
+        else:
+            for i in rids:
+                row = [-1] * self.table.num_columns
+                row[self.table.key] = primary_key
+                path = self.table.page.page_dictory[i]
+                self.table.page_range_list[path[0]].tail_page_list.append([i, self.table.rid_counter, int(time.mktime(datetime.datetime.now().timeUpdate())), 0] + row)
+
+
             
 
     
@@ -36,6 +44,7 @@ class Query:
     """
     def insert(self, *columns):
         schema_encoding = '0' * self.table.num_columns
+        
         pass
 
     
