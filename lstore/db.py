@@ -21,6 +21,10 @@ class Database():
     """
     def create_table(self, name, num_columns, key_index):
         table = Table(name, num_columns, key_index)
+<<<<<<< Updated upstream
+=======
+        self.tables.append(table)
+>>>>>>> Stashed changes
         return table
 
     
@@ -28,11 +32,29 @@ class Database():
     # Deletes the specified table
     """
     def drop_table(self, name):
+<<<<<<< Updated upstream
         pass
+=======
+        tgt = -1
+        for i in range(len(self.tables)):
+            if self.tables[i].name == name:
+                tgt = i
+        if tgt == -1:
+            return False
+        self.tables.pop(tgt)
+        return True
+>>>>>>> Stashed changes
 
     
     """
     # Returns table with the passed name
     """
     def get_table(self, name):
+<<<<<<< Updated upstream
         pass
+=======
+        for i in self.tables:
+            if i.name == name:
+                return i
+        return None
+>>>>>>> Stashed changes
